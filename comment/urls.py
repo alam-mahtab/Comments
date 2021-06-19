@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .router import router
 from comThread.views import CommentsAPI, AddCommentAPI, DeleteCommentAPI, EditCommentAPI
 from rest_framework import routers, serializers, viewsets
 from comThread.models import Comments
@@ -23,7 +22,6 @@ from rest_framework.response import Response
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('api/', include(router.urls)),
     path('', CommentsAPI.as_view()),
     path('get/', CommentsAPI.as_view()),
     path('add/', AddCommentAPI.as_view()),

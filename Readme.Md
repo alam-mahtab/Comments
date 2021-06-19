@@ -28,7 +28,7 @@ Keep in mind that there are no ‘right answers.’ This project is deliberately
 ## Commands
 * Setting up this project in you system:\
 First Clone it using:
-```
+```bash
 git clone https://github.com/alam-mahtab/Comments.git
 ```
 * Then run the following commands to start the server

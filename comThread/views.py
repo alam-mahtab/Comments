@@ -33,7 +33,7 @@ class CommentsAPI(APIView):
         comments = Comments.objects.filter(is_sub_comment=False)
         sub_comments_dict = {}
         for comment in comments:
-            sub_comments_dict[comment.id] = Comment.objects.filter(parent_id=comment.id)
+            sub_comments_dict[comment.id] = Comments.objects.filter(parent_id=comment.id)
         serializer = CommentSerializer(comments, many=True)
         # serializer.sub_comments_dict = sub_comments_dict
 
@@ -128,7 +128,7 @@ class DeleteCommentAPI(APIView):
             if serializer.is_valid(raise_exception=True):            
                 serializer.validated_data["comment_id"] = comment_id
                 serializer.validated_data["message"] = "Comment Deleted"
-                sub_comments = Comment.objects.filter(parent_id=comment.id)
+                sub_comments = Comments.objects.filter(parent_id=comment.id)
                 for sub_comment in sub_comments:
                     sub_comments.delete()
                 comment.delete()
